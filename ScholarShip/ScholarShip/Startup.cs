@@ -43,17 +43,20 @@ namespace ScholarShip
         public void CreateDefaultAdminUsers()
         {
             var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(db));
-            ApplicationUser user = new ApplicationUser()
+            ApplicationUser user = userManager.Find(ConstantVariables.adminUserName, ConstantVariables.adminEamil);
+            if (user == null)
             {
-                UserName = ConstantVariables.adminUserName,
-                Email = ConstantVariables.adminEamil
-            };
-            var result = userManager.Create(user, ConstantVariables.adminDefaultPassword);
-            if (result.Succeeded)
-            {
-                userManager.AddToRole(user.Id, ConstantVariables.adminsRole);
+                user = new ApplicationUser()
+                {
+                    UserName = ConstantVariables.adminUserName,
+                    Email = ConstantVariables.adminEamil
+                };
+                var result = userManager.Create(user, ConstantVariables.adminDefaultPassword);
+                if (result.Succeeded)
+                {
+                    userManager.AddToRole(user.Id, ConstantVariables.adminsRole);
+                }
             }
-
         }
 
 

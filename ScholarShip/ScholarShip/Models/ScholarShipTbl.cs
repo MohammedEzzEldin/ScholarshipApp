@@ -14,7 +14,7 @@ namespace ScholarShip.Models
         [Display(Name = "Program Description")]
         public string Description { get; set; }
 
-        [Display(Name = "Program Description")]
+        [Display(Name = "Requirements")]
         public string Requirements { get; set; }
         
         [Required]

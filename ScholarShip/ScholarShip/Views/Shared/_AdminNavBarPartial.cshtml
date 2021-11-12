@@ -1,0 +1,11 @@
+﻿@using Microsoft.AspNet.Identity
+@if (Request.IsAuthenticated)
+{
+    if (User.IsInRole("Admins"))
+    {
+        <ul class="nav navbar-nav">
+            <li>@Html.ActionLink("ScholarShips", "Index", "ScholarShips")</li>
+            <li>@Html.ActionLink("Applications", "Index", "Applications")</li>
+        </ul>
+    }
+}
