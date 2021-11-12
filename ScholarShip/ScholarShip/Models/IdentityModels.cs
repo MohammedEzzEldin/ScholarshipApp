@@ -29,5 +29,8 @@ namespace ScholarShip.Models
         {
             return new ApplicationDbContext();
         }
+        public DbSet<ScholarShipTbl> ScholarShips { get; set; }
+        public DbSet<Student> Student { get; set; }
+        public DbSet<Application> Application { get; set; }
     }
 }

@@ -105,3 +105,6 @@ C:\Users\Admin\source\repos\MohammedEzzEldin\ScholarshipApp\ScholarShip\ScholarS
 C:\Users\Admin\source\repos\MohammedEzzEldin\ScholarshipApp\ScholarShip\ScholarShip\obj\Debug\ScholarShip.csproj.CoreCompileInputs.cache
 C:\Users\Admin\source\repos\MohammedEzzEldin\ScholarshipApp\ScholarShip\ScholarShip\obj\Debug\ScholarShip.dll
 C:\Users\Admin\source\repos\MohammedEzzEldin\ScholarshipApp\ScholarShip\ScholarShip\obj\Debug\ScholarShip.pdb
+C:\Users\Admin\source\repos\MohammedEzzEldin\ScholarshipApp\ScholarShip\ScholarShip\obj\Debug\ScholarShip.Migrations.InitialCreate.resources
+C:\Users\Admin\source\repos\MohammedEzzEldin\ScholarshipApp\ScholarShip\ScholarShip\obj\Debug\ScholarShip.csproj.GenerateResource.cache
+C:\Users\Admin\source\repos\MohammedEzzEldin\ScholarshipApp\ScholarShip\ScholarShip\obj\Debug\ScholarShip.Migrations.addSomeTables.resources
