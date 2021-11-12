@@ -3,3 +3,5 @@
 ################################################################################
 
 /.vs
+/ScholarShip/ScholarShip/App_Data/ScholarShipDb.mdf
+/ScholarShip/ScholarShip/App_Data/ScholarShipDb_log.ldf
