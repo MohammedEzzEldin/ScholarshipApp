@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using ScholarShip.Classes;
 using ScholarShip.Models;
 
 namespace ScholarShip.Controllers
@@ -35,6 +36,7 @@ namespace ScholarShip.Controllers
             return View(scholarShip);
         }
 
+        [Authorize(Roles = ConstantVariables.adminsRole)]
         // GET: ScholarShips/Create
         public ActionResult Create()
         {
@@ -46,6 +48,7 @@ namespace ScholarShip.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = ConstantVariables.adminsRole)]
         public ActionResult Create([Bind(Include = "Id,Schol_Name,Description,Requirements,StartDate,EndDate,Field,University,Country,City,IsFinalPost")] ScholarShipTbl scholarShip)
         {
             if (ModelState.IsValid)
@@ -58,6 +61,7 @@ namespace ScholarShip.Controllers
             return View(scholarShip);
         }
 
+        [Authorize(Roles = ConstantVariables.adminsRole)]
         // GET: ScholarShips/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -78,6 +82,7 @@ namespace ScholarShip.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = ConstantVariables.adminsRole)]
         public ActionResult Edit([Bind(Include = "Id,Schol_Name,Description,Requirements,StartDate,EndDate,Field,University,Country,City,IsFinalPost")] ScholarShipTbl scholarShip)
         {
             if (ModelState.IsValid)
@@ -90,6 +95,7 @@ namespace ScholarShip.Controllers
         }
 
         // GET: ScholarShips/Delete/5
+        [Authorize(Roles = ConstantVariables.adminsRole)]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -107,6 +113,7 @@ namespace ScholarShip.Controllers
         // POST: ScholarShips/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = ConstantVariables.adminsRole)]
         public ActionResult DeleteConfirmed(int id)
         {
             ScholarShipTbl scholarShip = db.ScholarShips.Find(id);

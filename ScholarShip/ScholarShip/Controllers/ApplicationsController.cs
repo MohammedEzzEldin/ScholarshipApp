@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using ScholarShip.Classes;
 using ScholarShip.Models;
 
 namespace ScholarShip.Controllers
@@ -35,6 +36,7 @@ namespace ScholarShip.Controllers
             return View(application);
         }
 
+        [Authorize(Roles = ConstantVariables.adminsRole)]
         // GET: Applications/Create
         public ActionResult Create()
         {
@@ -46,6 +48,7 @@ namespace ScholarShip.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = ConstantVariables.adminsRole)]
         public ActionResult Create([Bind(Include = "Id,IsFinalPost,IsAccepted,RegDate,StartDate,EndDate")] Application application)
         {
             if (ModelState.IsValid)
@@ -59,6 +62,7 @@ namespace ScholarShip.Controllers
         }
 
         // GET: Applications/Edit/5
+        [Authorize(Roles = ConstantVariables.adminsRole)]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -78,6 +82,7 @@ namespace ScholarShip.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = ConstantVariables.adminsRole)]
         public ActionResult Edit([Bind(Include = "Id,IsFinalPost,IsAccepted,RegDate,StartDate,EndDate")] Application application)
         {
             if (ModelState.IsValid)
@@ -90,6 +95,7 @@ namespace ScholarShip.Controllers
         }
 
         // GET: Applications/Delete/5
+        [Authorize(Roles = ConstantVariables.adminsRole)]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -107,6 +113,7 @@ namespace ScholarShip.Controllers
         // POST: Applications/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = ConstantVariables.adminsRole)]
         public ActionResult DeleteConfirmed(int id)
         {
             Application application = db.Application.Find(id);
