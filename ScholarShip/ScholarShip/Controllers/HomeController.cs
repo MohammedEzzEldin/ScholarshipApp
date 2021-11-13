@@ -48,7 +48,7 @@ namespace ScholarShip.Controllers
             var view = (
                         from app in db.Application
                         join schol in db.ScholarShips on app.ScholarShip_Id equals schol.Id
-                        join app_stud in db.Student_Application.Where(m => m.IsFinalPost == false)
+                        join app_stud in db.Student_Application.Where(m => m.IsFinalPost != true)
                                                     on app.Id equals app_stud.Application_Id 
                         join stud in db.Student on app_stud.Student_Id equals stud.Id
                         where DateTime.Now.CompareTo(app.StartDate) > -1 && DateTime.Now.CompareTo(app.EndDate) < 1
