@@ -1,4 +1,5 @@
 ﻿
+using ScholarShip.Classes;
 using System;
 using System.ComponentModel.DataAnnotations;
 namespace ScholarShip.Models
@@ -20,11 +21,13 @@ namespace ScholarShip.Models
         [Required]
         [DataType(DataType.Date)]
         [Display(Name = "Start Date")]
+        [DisplayFormat(DataFormatString = ConstantVariables.defaultDateFormat)]
         public DateTime StartDate { get; set; }
 
 
         [DataType(DataType.Date)]
         [Display(Name = "End Date")]
+        [DisplayFormat(DataFormatString = ConstantVariables.defaultDateFormat)]
         public DateTime EndDate { get; set; }
 
         [Display(Name = "Field of study")]

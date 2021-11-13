@@ -169,6 +169,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Classes\ConstantVariables.cs" />
     <Compile Include="Classes\Enums.cs" />
+    <Compile Include="Classes\StaticFunctions.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ApplicationsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -193,8 +194,17 @@
     <Compile Include="Migrations\202111130802235_fixSomeColumns.Designer.cs">
       <DependentUpon>202111130802235_fixSomeColumns.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202111130816386_newMigration.cs" />
+    <Compile Include="Migrations\202111130816386_newMigration.Designer.cs">
+      <DependentUpon>202111130816386_newMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202111131229126_newMigration1.cs" />
+    <Compile Include="Migrations\202111131229126_newMigration1.Designer.cs">
+      <DependentUpon>202111131229126_newMigration1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\HomeViewModel.cs" />
     <Compile Include="Models\Student_Scholarship.cs" />
     <Compile Include="Models\Student_Application.cs" />
     <Compile Include="Models\Application.cs" />
@@ -262,16 +272,17 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_AdminNavBarPartial.cshtml" />
-    <Content Include="Views\Applications\Create.cshtml" />
-    <Content Include="Views\Applications\Delete.cshtml" />
-    <Content Include="Views\Applications\Details.cshtml" />
-    <Content Include="Views\Applications\Edit.cshtml" />
-    <Content Include="Views\Applications\Index.cshtml" />
     <Content Include="Views\ScholarShipTbls\Create.cshtml" />
     <Content Include="Views\ScholarShipTbls\Delete.cshtml" />
     <Content Include="Views\ScholarShipTbls\Details.cshtml" />
     <Content Include="Views\ScholarShipTbls\Edit.cshtml" />
     <Content Include="Views\ScholarShipTbls\Index.cshtml" />
+    <Content Include="Views\Applications\Delete.cshtml" />
+    <Content Include="Views\Applications\Details.cshtml" />
+    <Content Include="Views\Applications\Edit.cshtml" />
+    <Content Include="Views\Applications\Index.cshtml" />
+    <Content Include="Views\Shared\_StudentNavBarPartial.cshtml" />
+    <Content Include="Views\Applications\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -301,6 +312,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202111130802235_fixSomeColumns.resx">
       <DependentUpon>202111130802235_fixSomeColumns.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202111130816386_newMigration.resx">
+      <DependentUpon>202111130816386_newMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202111131229126_newMigration1.resx">
+      <DependentUpon>202111131229126_newMigration1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

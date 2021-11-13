@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ScholarShip.Classes;
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace ScholarShip.Models
@@ -11,6 +12,7 @@ namespace ScholarShip.Models
         [Required]
         [DataType(DataType.Date)]
         [Display(Name = "Register Date")]
+        [DisplayFormat(DataFormatString = ConstantVariables.defaultDateFormat)]
         public DateTime RegDate { get; set; }
 
         public Application Application { get; set; }

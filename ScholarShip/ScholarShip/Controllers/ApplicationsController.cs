@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using ScholarShip.Classes;
 using ScholarShip.Models;
 
 namespace ScholarShip.Controllers
@@ -38,7 +39,23 @@ namespace ScholarShip.Controllers
         // GET: Applications/Create
         public ActionResult Create()
         {
+            ScholarShipsList();
             return View();
+        }
+
+        [NonAction]
+        private void ScholarShipsList(object selectedValue = null)
+        {
+            //var Dictionary =
+            //    db.ScholarShips.Where(
+            //               model => DateTime.Now.CompareTo(model.StartDate) > -1 &&
+            //              (model.EndDate == null || DateTime.Now.CompareTo(model.EndDate) < 1)
+            //    )
+            //    //.Select(model => new { Key = model.Id, Value = model.Schol_Name })
+            //     .ToDictionary(k => k.Id , v => v.Schol_Name);
+            //ViewBag.ScholarShipsList = StaticFunctions.ToSelectList(Dictionary);
+
+            ViewBag.ScholarShipsList = new SelectList(db.ScholarShips, "Id", "Schol_Name", selectedValue);
         }
 
         // POST: Applications/Create
@@ -46,7 +63,7 @@ namespace ScholarShip.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,StartDate,EndDate")] Application application)
+        public ActionResult Create([Bind(Include = "Id,ScholarShip_Id,StartDate,EndDate")] Application application)
         {
             if (ModelState.IsValid)
             {
@@ -54,9 +71,35 @@ namespace ScholarShip.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
+            ScholarShipsList();
             return View(application);
         }
+        //[HttpPost, ActionName("Create")]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult CreateAction()
+        //{
+        //    Application application = new Application();
+        //    if (!string.IsNullOrEmpty(Request.Form["StartDate"]))
+        //    {
+        //        application.StartDate = Convert.ToDateTime(Request.Form["StartDate"]);
+        //    }
+
+        //    if (!string.IsNullOrEmpty(Request.Form["EndDate"]))
+        //    {
+        //        application.EndDate = Convert.ToDateTime(Request.Form["EndDate"]);
+        //    }
+        //    ScholarShipTbl scholarShip = db.ScholarShips.Find(Convert.ToInt32(Request.Form["ScholarShip_Id"]));
+        //    application.ScholarShip = scholarShip;
+
+        //    if (ModelState.IsValid)
+        //    {
+        //        db.Application.Add(application);
+        //        db.SaveChanges();
+        //        return RedirectToAction("Index");
+        //    }
+        //    ScholarShipsList();
+        //    return View(application);
+        //}
 
         // GET: Applications/Edit/5
         public ActionResult Edit(int? id)

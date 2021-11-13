@@ -1,0 +1,13 @@
+﻿@using Microsoft.AspNet.Identity
+@if (Request.IsAuthenticated)
+{
+<ul class="nav navbar-nav">
+    @if (!User.IsInRole("Admins"))
+    {
+        <li>@Html.ActionLink("Scholarship", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })</li>
+    }
+    @if (User.IsInRole("Students"))
+    {
+    }
+</ul>
+}

@@ -1,19 +1,86 @@
-﻿@model IEnumerable<ScholarShip.Models.Application>
+﻿@model IEnumerable<ScholarShip.Models.HomeViewModel>
 @{
     ViewBag.Title = "Home Page";
 }
 
-@foreach (var item in Model)
-{
-    <div class="card" style="width: 18rem;">
-        <div class="card-header"> @item.ScholarShip.Schol_Name</div>
-        <div class="card-body">
-            <h5 class="card-title">@item.ScholarShip.University</h5>
-            <p class="card-text">Field of Study : @item.ScholarShip.Field</p>
-            <p class="card-text">from : @item.ScholarShip.StartDate to @item.ScholarShip.EndDate </p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
+@*@foreach (var item in Model)
+    {
+        <div class="card">
+            <div class="card-header">@Html.DisplayFor(modelItem => item.Schol_Name)</div>
+            <div class="card-body">
+                <h5 class="card-title">@Html.DisplayFor(modelItem => item.University)</h5>
+                <p class="card-text">
+                    Field of Study :@Html.DisplayFor(modelItem => item.Field)
+                </p>
+                <p class="card-text">
+                    ScholarShip from :@Html.DisplayFor(modelItem => item.Scholarship_StartDate)
+                    to :
+                    @Html.DisplayFor(modelItem => item.Scholarship_EndDate)
+                </p>
+                <p class="card-text">
+                    Application from :@Html.DisplayFor(modelItem => item.StartDate)
+                    to :
+                    @Html.DisplayFor(modelItem => item.EndDate)
+                </p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
 
-            @Html.ActionLink("Details", "Details","Applications", new { id = item.Id },null) 
+                @Html.ActionLink("Details", "Details", "Applications", new { id = item.Id }, null)
+            </div>
         </div>
-    </div>
-}
+    }*@
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Schol_Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.University)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Field)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Scholarship_StartDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Scholarship_EndDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StartDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EndDate)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Schol_Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.University)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Field)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Scholarship_StartDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Scholarship_EndDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StartDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EndDate)
+                </td>
+                <td>
+                    @Html.ActionLink("Details", "Details", "Applications", new { id = item.Id }, null)
+                </td>
+            </tr>
+        }
+</table>

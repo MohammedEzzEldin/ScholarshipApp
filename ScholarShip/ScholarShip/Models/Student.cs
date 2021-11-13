@@ -19,6 +19,7 @@ namespace ScholarShip.Models
         [Required]
         [DataType(DataType.Date)]
         [Display(Name = "Birth Date")]
+        [DisplayFormat(DataFormatString = ConstantVariables.defaultDateFormat)]
         public DateTime BirthDate { get; set; }
 
         [Required]

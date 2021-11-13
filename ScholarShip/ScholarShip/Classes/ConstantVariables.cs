@@ -7,6 +7,7 @@
         public const string adminUserName = "admin";
         public const string adminEamil = "mohammad_mahmoudezeldin@yahoo.com";
         public const string adminDefaultPassword = "password";
+        public const string defaultDateFormat = "{0:dd-MM-yyyy}";
         public const int maxLengthOfPassword = 10;
         public const int minLengthOfPassword = 6;
         public const int lengthOfNationalID = 14;
