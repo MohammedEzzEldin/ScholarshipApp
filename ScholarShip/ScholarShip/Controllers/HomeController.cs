@@ -57,12 +57,12 @@ namespace ScholarShip.Controllers
                             Student_Application_Id = app_stud.Id, IsAccepted = app_stud.IsAccepted , 
                             IsFinalPost = app_stud.IsFinalPost, Schol_Name = schol.Schol_Name,
                             Field = schol.Field, Scholarship_University = schol.University,
-                            FullName = string.Format("{0} {1}", stud.Fname ,stud.Lname),
+                            FullName = stud.Fname + " " + stud.Lname,
                             NationalID = stud.NationalID, University = stud.University,
                             Major = stud.Major,GPA = stud.GPA
                         }).ToList();
 
-            return View();
+            return View(view);
         }
         public ActionResult UploadResume(int? id)
         {
