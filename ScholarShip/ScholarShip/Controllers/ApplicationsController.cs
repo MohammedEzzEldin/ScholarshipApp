@@ -100,6 +100,84 @@ namespace ScholarShip.Controllers
         //    ScholarShipsList();
         //    return View(application);
         //}
+        [Authorize(Roles = ConstantVariables.adminsRole)]
+        public ActionResult AcceptApplications(int? student_Application_Id)
+        {
+            if (student_Application_Id != null)
+            {
+                // cehck if he already apply on it 
+                Student_Application student_Application = db.Student_Application.Find(student_Application_Id);
+                if (student_Application != null)
+                {
+                    Student stud = db.Student.Find(student_Application.Student_Id);
+                    student_Application.IsAccepted = true;
+                    db.Entry(student_Application).State = EntityState.Modified;
+                    db.SaveChanges();
+
+                    string msg = string.Empty;
+                    bool isSend = StaticFunctions.SendEmail(
+                        stud.Email,
+                        "Accepted Application",
+                        string.Format("Your application No. {0} is accepted",student_Application.Application_Id),
+                        ref msg
+                    );
+                    if (isSend)
+                    {
+                        msg = "We send the status on your email";
+                    }
+                    TempData["Message"] = msg;
+                }
+            }
+            return RedirectToAction("IndexOfStudents", "Home");
+        }
+        [Authorize(Roles = ConstantVariables.adminsRole)]
+        public ActionResult RejectApplication(int? student_Application_Id)
+        {
+            if (student_Application_Id != null)
+            {
+                // cehck if he already apply on it 
+                Student_Application student_Application = db.Student_Application.Find(student_Application_Id);
+                if (student_Application != null)
+                {
+                    Student stud = db.Student.Find(student_Application.Student_Id);
+                    student_Application.IsAccepted = false;
+                    db.Entry(student_Application).State = EntityState.Modified;
+                    db.SaveChanges();
+
+                    string msg = string.Empty;
+                    bool isSend = StaticFunctions.SendEmail(
+                        stud.Email,
+                        "Accepted Application",
+                        string.Format("Your application No. {0} is rejected", student_Application.Application_Id),
+                        ref msg
+                    );
+                    if (isSend)
+                    {
+                        msg = "We send the status on your email";
+                    }
+                    TempData["Message"] = msg;
+                }
+            }
+            return RedirectToAction("IndexOfStudents", "Home");
+        }
+
+        [Authorize(Roles = ConstantVariables.adminsRole)]
+        public ActionResult FinalPostApplication(int? student_Application_Id)
+        {
+            if (student_Application_Id != null)
+            {
+                // cehck if he already apply on it 
+                Student_Application student_Application = db.Student_Application.Find(student_Application_Id);
+                if (student_Application != null)
+                {
+                    student_Application.IsFinalPost = true;
+                    db.Entry(student_Application).State = EntityState.Modified;
+                    db.SaveChanges();
+                }
+            }
+            return RedirectToAction("IndexOfStudents", "Home");
+        }
+
         [Authorize(Roles = ConstantVariables.studentsRole)]
         public ActionResult Apply(int? id)
         {

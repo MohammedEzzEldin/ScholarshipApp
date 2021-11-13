@@ -7,7 +7,8 @@ namespace ScholarShip.Models
     public class Student_Application
     {
         public int Id { get; set; }
-        public bool IsAccepted { get; set; } = false;
+        public bool? IsAccepted { get; set; } = false;
+        public bool? IsFinalPost { get; set; } = false;
 
         [Required]
         [DataType(DataType.Date)]

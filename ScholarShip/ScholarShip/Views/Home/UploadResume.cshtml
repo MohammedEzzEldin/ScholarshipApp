@@ -13,7 +13,7 @@
             <table class=" main-table table table-bordered table-hover text-center">
                 <tr>
                     <th>Select File</th>
-                   <th></th>
+                    <th>@Html.DisplayFor(model => model.Resume)</th>
                 </tr>
                 @using (Html.BeginForm("UploadResume", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
                 {

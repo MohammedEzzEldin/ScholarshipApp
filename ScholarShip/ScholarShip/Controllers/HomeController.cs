@@ -42,6 +42,30 @@ namespace ScholarShip.Controllers
 
             return View();
         }
+        [Authorize(Roles = ConstantVariables.adminsRole)]
+        public ActionResult IndexOfStudents()
+        {
+            var view = (
+                        from app in db.Application
+                        join schol in db.ScholarShips on app.ScholarShip_Id equals schol.Id
+                        join app_stud in db.Student_Application.Where(m => m.IsFinalPost == false)
+                        on app.Id equals app_stud.Application_Id 
+                        where DateTime.Now.CompareTo(app.StartDate) > -1 && DateTime.Now.CompareTo(app.EndDate) < 1
+                        select new HomeViewModel()
+                        {
+                            Id = app.Id,
+                            StartDate = app.StartDate,
+                            EndDate = app.EndDate,
+                            Schol_Name = schol.Schol_Name,
+                            Field = schol.Field,
+                            University = schol.University,
+                            Scholarship_StartDate = schol.StartDate,
+                            Scholarship_EndDate = schol.EndDate,
+                            Student_Application_Id = app_stud.Id
+                        }).ToList();
+
+            return View();
+        }
         public ActionResult UploadResume(int? id)
         {
             Student student = db.Student.Find(id);

@@ -1,0 +1,85 @@
+﻿@model IEnumerable<ScholarShip.Models.IndexOfStudentViewModel>
+@{
+    ViewBag.Title = "Home Page";
+}
+
+@if (Model.Count() == 0)
+{
+    <h3 class="text-center">No data to display</h3>
+}
+else
+{
+    <h3 class="text-center">@ViewBag.Message</h3>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Schol_Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Field)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Scholarship_University)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FullName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NationalID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.University)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Major)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GPA)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Schol_Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Field)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Scholarship_University)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FullName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.University)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.University)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Major)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GPA)
+                </td>
+
+                <td>
+                    @if (item.IsAccepted == true)
+                    {
+                        @Html.ActionLink("RejectApplication", "RejectApplication", "Applications", new { student_Application_Id = item.Student_Application_Id }, new { @class = "btn btn-danger btn-sm" })
+                    }
+                    else
+                    {
+                        @Html.ActionLink("Accept", "AcceptApplications", "Applications", new { student_Application_Id = item.Student_Application_Id }, new { @class = "btn btn-primary btn-sm" })
+                    }
+                    @Html.ActionLink("FinalPostApplication", "FinalPostApplication", "Applications", new { student_Application_Id = item.Student_Application_Id }, new { @class = "btn btn-danger btn-sm" })
+                </td>
+
+            </tr>
+        }
+    </table>
+}
