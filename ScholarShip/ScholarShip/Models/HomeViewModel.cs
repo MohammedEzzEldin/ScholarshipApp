@@ -8,6 +8,8 @@ namespace ScholarShip.Models
     {
         public int Id { get; set; }
         public int? Student_Application_Id { get; set; }
+        public bool? IsAccepted { get; set; }
+        public bool? IsFinalPost { get; set; }
 
         [Display(Name = "Name of Scholarship")]
         public string Schol_Name { get; set; }

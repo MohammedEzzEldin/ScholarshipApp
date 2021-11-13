@@ -94,10 +94,23 @@ else
                             @Html.ActionLink("Apply", "Apply", "Applications", new { id = item.Id }, new { @class = "btn btn-primary btn-sm" })
                         </td>
                     }
-                    else
+                    else if (item.IsFinalPost != true)
                     {
                         <td>
                             @Html.ActionLink("Cancel", "CancelApplication", "Applications", new { application_id = item.Student_Application_Id }, new { @class = "btn btn-danger btn-sm" })
+                        </td>
+                    }
+                    else
+                    {
+                        <td>
+                            @if (item.IsAccepted == true)
+                            {
+                                <span class="text-success">Accepted</span>
+                            }
+                            else
+                            {
+                                <span class="text-success">Accepted</span>
+                            }
                         </td>
                     }
                 }

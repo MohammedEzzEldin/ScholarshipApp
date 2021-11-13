@@ -31,7 +31,8 @@ namespace ScholarShip.Controllers
                         select new HomeViewModel() { 
                             Id = app.Id,StartDate = app.StartDate,EndDate = app.EndDate,Schol_Name = schol.Schol_Name,
                             Field = schol.Field, University = schol.University, Scholarship_StartDate = schol.StartDate,
-                            Scholarship_EndDate = schol.EndDate , Student_Application_Id = app_stud.Id
+                            Scholarship_EndDate = schol.EndDate , Student_Application_Id = app_stud.Id,
+                            IsAccepted = app_stud.IsAccepted , IsFinalPost = app_stud.IsFinalPost
                         }).ToList();
             return View(view);
         }
