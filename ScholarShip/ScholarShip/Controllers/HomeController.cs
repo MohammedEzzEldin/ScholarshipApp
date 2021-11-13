@@ -49,19 +49,17 @@ namespace ScholarShip.Controllers
                         from app in db.Application
                         join schol in db.ScholarShips on app.ScholarShip_Id equals schol.Id
                         join app_stud in db.Student_Application.Where(m => m.IsFinalPost == false)
-                        on app.Id equals app_stud.Application_Id 
+                                                    on app.Id equals app_stud.Application_Id 
+                        join stud in db.Student on app_stud.Student_Id equals stud.Id
                         where DateTime.Now.CompareTo(app.StartDate) > -1 && DateTime.Now.CompareTo(app.EndDate) < 1
-                        select new HomeViewModel()
+                        select new IndexOfStudentViewModel ()
                         {
-                            Id = app.Id,
-                            StartDate = app.StartDate,
-                            EndDate = app.EndDate,
-                            Schol_Name = schol.Schol_Name,
-                            Field = schol.Field,
-                            University = schol.University,
-                            Scholarship_StartDate = schol.StartDate,
-                            Scholarship_EndDate = schol.EndDate,
-                            Student_Application_Id = app_stud.Id
+                            Student_Application_Id = app_stud.Id, IsAccepted = app_stud.IsAccepted , 
+                            IsFinalPost = app_stud.IsFinalPost, Schol_Name = schol.Schol_Name,
+                            Field = schol.Field, Scholarship_University = schol.University,
+                            FullName = string.Format("{0} {1}", stud.Fname ,stud.Lname),
+                            NationalID = stud.NationalID, University = stud.University,
+                            Major = stud.Major,GPA = stud.GPA
                         }).ToList();
 
             return View();

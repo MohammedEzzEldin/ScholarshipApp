@@ -34,6 +34,6 @@ namespace ScholarShip.Models
 
         [Display(Name = "GPA")]
         public float GPA { get; set; }
-        public string Resume { get; set; }
+       // public string Resume { get; set; }
     }
 }

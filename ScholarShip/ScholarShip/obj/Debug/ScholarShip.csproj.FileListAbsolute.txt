@@ -114,3 +114,4 @@ C:\Users\Admin\source\repos\MohammedEzzEldin\ScholarshipApp\ScholarShip\ScholarS
 C:\Users\Admin\source\repos\MohammedEzzEldin\ScholarshipApp\ScholarShip\ScholarShip\obj\Debug\ScholarShip.Migrations.newMigration1.resources
 C:\Users\Admin\source\repos\MohammedEzzEldin\ScholarshipApp\ScholarShip\ScholarShip\obj\Debug\ScholarShip.Migrations.newMigration2.resources
 C:\Users\Admin\source\repos\MohammedEzzEldin\ScholarshipApp\ScholarShip\ScholarShip\obj\Debug\ScholarShip.Migrations.newMigration3.resources
+C:\Users\Admin\source\repos\MohammedEzzEldin\ScholarshipApp\ScholarShip\ScholarShip\obj\Debug\ScholarShip.Migrations.newMigration4.resources

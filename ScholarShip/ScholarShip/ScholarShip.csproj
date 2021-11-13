@@ -211,6 +211,10 @@
     <Compile Include="Migrations\202111131610015_newMigration3.Designer.cs">
       <DependentUpon>202111131610015_newMigration3.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202111132104546_newMigration4.cs" />
+    <Compile Include="Migrations\202111132104546_newMigration4.Designer.cs">
+      <DependentUpon>202111132104546_newMigration4.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IndexOfStudentViewModel.cs" />
@@ -343,6 +347,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202111131610015_newMigration3.resx">
       <DependentUpon>202111131610015_newMigration3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202111132104546_newMigration4.resx">
+      <DependentUpon>202111132104546_newMigration4.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

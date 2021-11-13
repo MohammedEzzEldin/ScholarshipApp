@@ -3,9 +3,10 @@
 {
     if (User.IsInRole("Admins"))
     {
-        <ul class="nav navbar-nav">
-            <li>@Html.ActionLink("ScholarShips", "Index", "ScholarShipTbls")</li>
-            <li>@Html.ActionLink("Applications", "Index", "Applications")</li>
-        </ul>
+<ul class="nav navbar-nav">
+    <li>@Html.ActionLink("ScholarShips", "Index", "ScholarShipTbls")</li>
+    <li>@Html.ActionLink("Applications", "Index", "Applications")</li>
+    <li>@Html.ActionLink("Student Applications", "IndexOfStudents", "Home")</li>
+</ul>
     }
 }
