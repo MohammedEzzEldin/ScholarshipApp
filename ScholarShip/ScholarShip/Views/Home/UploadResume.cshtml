@@ -1,0 +1,47 @@
+﻿@model ScholarShip.Models.Student
+@{
+    ViewBag.Title = "UploadResume";
+}
+
+<br />
+<div class="contentt">
+    <h3 class="text-center" style="color:grey">Upload File or Replace File</h3>
+    <hr />
+    
+    <div class="container">
+        <div class="table-responsive">
+            <table class=" main-table table table-bordered table-hover text-center">
+                <tr>
+                    <th>Select File</th>
+                   <th></th>
+                </tr>
+                @using (Html.BeginForm("UploadResume", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    @Html.HiddenFor(model => model.Id)
+                    <tr>
+                        <td>
+                            @Html.TextBox("file", "", new { type = "file", id = "UploadResume", name = "file" })
+                            @Html.ValidationMessage("file", "", new { @class = "text-danger" })
+                        </td>
+
+                        <td>
+                            <button type="submit" class="btn btn-outline-primary btn-lg "> Save </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            ".txt", ".GIF", ".pdf" , ".doc"
+                        </td>
+                        <td>
+                            Available Extensions
+                        </td>
+                    </tr>
+                }
+            </table>
+            <hr />
+        </div>
+    </div>
+</div>
+

@@ -34,13 +34,13 @@ namespace ScholarShip.Classes
         {
             try
             {
-                WebMail.SmtpServer = "smtp.mail.yahoo.com";
-                WebMail.SmtpPort = 587;
+                WebMail.SmtpServer = ConstantVariables.SmtpServer;
+                WebMail.SmtpPort = ConstantVariables.SmtpPort;
                 WebMail.EnableSsl = true;
                 WebMail.SmtpUseDefaultCredentials = true;
-                WebMail.UserName = "EMR_GP@yahoo.com";
-                WebMail.Password = "Password_GP";
-                WebMail.From = "EMR_GP@yahoo.com";
+                WebMail.UserName = ConstantVariables.snederEamil;
+                WebMail.Password = ConstantVariables.senderEmailtPassword;
+                WebMail.From = ConstantVariables.snederEamil;
                 WebMail.Send(receiverEmail, subject, body);
             }
             catch (Exception ex) { 

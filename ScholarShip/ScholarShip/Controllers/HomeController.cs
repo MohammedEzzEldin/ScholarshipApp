@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using ScholarShip.Classes;
@@ -13,18 +15,6 @@ namespace ScholarShip.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
         public ActionResult Index()
         {
-            //var view = db.Application.Where(
-            //    app => DateTime.Now.Year < app.EndDate.Year ||
-            //           (DateTime.Now.Year == app.EndDate.Year && DateTime.Now.Month < app.EndDate.Month) ||
-            //           (
-            //              DateTime.Now.Year == app.EndDate.Year && 
-            //              DateTime.Now.Month == app.EndDate.Month && 
-            //              DateTime.Now.Day <= app.EndDate.Day
-            //           )
-            //    ).ToList();
-            //var view = db.Application.Where(
-            //    app =>  DateTime.Now.CompareTo(app.StartDate) > -1 && DateTime.Now.CompareTo(app.EndDate) < 1
-            //    ).ToList();
             ViewBag.Message = TempData["Message"];
             int userId = 0;
             if(StaticFunctions.GetSessionUserID(Session[ConstantVariables.UserSessionKey]) != null)
@@ -52,7 +42,62 @@ namespace ScholarShip.Controllers
 
             return View();
         }
+        public ActionResult UploadResume(int? id)
+        {
+            Student student = db.Student.Find(id);
+            return View(student);
+        }
 
+        [HttpPost]
+        public ActionResult UploadResume(HttpPostedFileBase file)
+        {
+            Student student = db.Student.Find(Convert.ToInt32(Request.Form["Id"]));
+            if (student == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.NotFound);
+            }
+
+            if (ModelState.IsValid)
+            {
+                if (file == null)
+                {
+                    ModelState.AddModelError("Id", "Some Problems occures !");
+                    return View(student);
+                }
+
+                if (file.FileName != null)
+                {
+
+                    string ext = System.IO.Path.GetExtension(file.FileName);
+                    if (ext != null)
+                    {
+                        switch (ext.ToLower())
+                        {
+                            case ".txt":
+                                break;
+
+                            case ".GIF":
+                                break;
+
+                            case ".pdf":
+                                break;
+
+                            case ".doc":
+                                break;
+                            default:
+                                ModelState.AddModelError("Id", "This Extension Not Allowed");
+                                return View(student);
+                        }
+                        file.SaveAs(Server.MapPath("~/Content/Images/") + student.Id + ext);
+                        student.Resume = "~/Content/Images/" + student.Id + ext;
+                        db.Entry(student).State = EntityState.Modified;
+                        db.SaveChanges();
+                        return RedirectToAction("Index");
+                    }
+                }
+            }
+            return View(student);
+        }
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";

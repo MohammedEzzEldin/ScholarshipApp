@@ -23,7 +23,7 @@ namespace ScholarShip.Controllers
         {
         }
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
+        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
         {
             UserManager = userManager;
             SignInManager = signInManager;
@@ -35,9 +35,9 @@ namespace ScholarShip.Controllers
             {
                 return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
             }
-            private set 
-            { 
-                _signInManager = value; 
+            private set
+            {
+                _signInManager = value;
             }
         }
 
@@ -82,12 +82,12 @@ namespace ScholarShip.Controllers
                 case SignInStatus.Success:
                     {
                         Student student = db.Student.Where(stud => stud.UserName.Equals(model.UserName)).SingleOrDefault();
-                        if(student != null)
+                        if (student != null)
                         {
                             Session[ConstantVariables.UserSessionKey] = student.Id;
                             Session[ConstantVariables.UserEmailSessionKey] = student.Email;
                         }
-                       return RedirectToLocal(returnUrl);
+                        return RedirectToLocal(returnUrl);
                     }
                 case SignInStatus.LockedOut:
                     return View("Lockout");
@@ -129,7 +129,7 @@ namespace ScholarShip.Controllers
             // If a user enters incorrect codes for a specified amount of time then the user account 
             // will be locked out for a specified amount of time. 
             // You can configure the account lockout settings in IdentityConfig
-            var result = await SignInManager.TwoFactorSignInAsync(model.Provider, model.Code, isPersistent:  model.RememberMe, rememberBrowser: model.RememberBrowser);
+            var result = await SignInManager.TwoFactorSignInAsync(model.Provider, model.Code, isPersistent: model.RememberMe, rememberBrowser: model.RememberBrowser);
             switch (result)
             {
                 case SignInStatus.Success:
@@ -166,43 +166,35 @@ namespace ScholarShip.Controllers
                 {
                     UserManager.AddToRole(user.Id, ConstantVariables.studentsRole);
 
-                    await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-
+                    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
                     Student student = new Student()
                     {
                         BirthDate = model.BirthDate,
                         Fname = model.Fname,
                         Lname = model.Lname,
+                        UserName = model.UserName,
                         Email = model.Email,
                         GPA = model.GPA,
                         Major = model.Major,
                         NationalID = model.NationalID,
                         University = model.University
                     };
-                    CreateNewUser(student);
+                    db.Student.Add(student);
+                    db.SaveChanges();
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
-                    
-                    return RedirectToAction("Index", "Home");
+
+                    return RedirectToAction("UploadResume", "Home", new { Id = student.Id });
                 }
                 AddErrors(result);
             }
 
             // If we got this far, something failed, redisplay form
             return View(model);
-        }
-        [NonAction]
-        private void CreateNewUser(Student student)
-        {
-            if(student != null)
-            {
-            db.Student.Add(student);
-            db.SaveChanges();
-            }
         }
         //
         // GET: /Account/ConfirmEmail

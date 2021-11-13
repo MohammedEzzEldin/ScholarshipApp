@@ -8,7 +8,7 @@
     }
     @if (User.IsInRole("Students"))
     {
-
+        <li>@Html.ActionLink("Upload Resume", "UploadResume", "Home", new { id = Session["UserID"] }, new { @class = "navbar-brand" })</li>
     }
 </ul>
 }
