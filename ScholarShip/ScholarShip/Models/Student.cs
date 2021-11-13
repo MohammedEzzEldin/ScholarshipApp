@@ -9,6 +9,15 @@ namespace ScholarShip.Models
         public int Id { get; set; }
 
         [Required]
+        [EmailAddress]
+        [Display(Name = "Email")]
+        public string Email { get; set; }
+
+        [Required]
+        [Display(Name = "User Name")]
+        public string UserName { get; set; }
+
+        [Required]
         [Display(Name = "First Name")]
         public string Fname { get; set; }
 
@@ -19,7 +28,7 @@ namespace ScholarShip.Models
         [Required]
         [DataType(DataType.Date)]
         [Display(Name = "Birth Date")]
-        [DisplayFormat(DataFormatString = ConstantVariables.defaultDateFormat)]
+        [DisplayFormat(DataFormatString = ConstantVariables.defaultDateFormat,ApplyFormatInEditMode = true)]
         public DateTime BirthDate { get; set; }
 
         [Required]

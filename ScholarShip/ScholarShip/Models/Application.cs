@@ -21,6 +21,7 @@ namespace ScholarShip.Models
         public DateTime EndDate { get; set; }
 
         [Required]
+        [Display(Name = "ScholarShip")]
         public int ScholarShip_Id { get; set; }
         public ScholarShipTbl ScholarShip { get; set; }
     }

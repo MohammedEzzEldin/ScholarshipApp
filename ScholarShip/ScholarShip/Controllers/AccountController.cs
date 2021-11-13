@@ -18,7 +18,7 @@ namespace ScholarShip.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
-
+        private ApplicationDbContext db = new ApplicationDbContext();
         public AccountController()
         {
         }
@@ -80,7 +80,14 @@ namespace ScholarShip.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
-                    return RedirectToLocal(returnUrl);
+                    {
+                        Student student = db.Student.Where(stud => stud.UserName.Equals(model.UserName)).SingleOrDefault();
+                        if(student != null)
+                        {
+                            Session["UserID"] = student.Id;
+                        }
+                       return RedirectToLocal(returnUrl);
+                    }
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:
@@ -160,6 +167,18 @@ namespace ScholarShip.Controllers
 
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
 
+                    Student student = new Student()
+                    {
+                        BirthDate = model.BirthDate,
+                        Fname = model.Fname,
+                        Lname = model.Lname,
+                        Email = model.Email,
+                        GPA = model.GPA,
+                        Major = model.Major,
+                        NationalID = model.NationalID,
+                        University = model.University
+                    };
+                    CreateNewUser(student);
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
@@ -175,7 +194,15 @@ namespace ScholarShip.Controllers
             // If we got this far, something failed, redisplay form
             return View(model);
         }
-
+        [NonAction]
+        private void CreateNewUser(Student student)
+        {
+            if(student != null)
+            {
+            db.Student.Add(student);
+            db.SaveChanges();
+            }
+        }
         //
         // GET: /Account/ConfirmEmail
         [AllowAnonymous]
