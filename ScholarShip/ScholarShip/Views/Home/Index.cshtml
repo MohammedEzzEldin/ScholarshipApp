@@ -34,6 +34,7 @@
 }
 else
 {
+    <h3 class="text-center">@ViewBag.Message</h3>
     <table class="table">
         <tr>
             <th>
@@ -84,9 +85,22 @@ else
                 <td>
                     @Html.DisplayFor(modelItem => item.EndDate)
                 </td>
-                <td>
-                    @Html.ActionLink("Details", "Details", "Applications", new { id = item.Id }, null)
-                </td>
+                @if (User.IsInRole("Students"))
+                {
+
+                    if (item.Student_Application_Id == null)
+                    {
+                        <td>
+                            @Html.ActionLink("Apply", "Apply", "Applications", new { id = item.Id }, new { @class = "btn btn-primary btn-sm" })
+                        </td>
+                    }
+                    else
+                    {
+                        <td>
+                            @Html.ActionLink("Cancel", "CancelApplication", "Applications", new { application_id = item.Student_Application_Id }, new { @class = "btn btn-danger btn-sm" })
+                        </td>
+                    }
+                }
             </tr>
         }
     </table>

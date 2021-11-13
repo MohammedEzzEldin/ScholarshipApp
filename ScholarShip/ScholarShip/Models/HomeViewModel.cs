@@ -7,6 +7,7 @@ namespace ScholarShip.Models
     public class HomeViewModel
     {
         public int Id { get; set; }
+        public int? Student_Application_Id { get; set; }
 
         [Display(Name = "Name of Scholarship")]
         public string Schol_Name { get; set; }

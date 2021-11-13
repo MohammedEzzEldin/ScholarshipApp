@@ -175,6 +175,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ScholarShipTblsController.cs" />
+    <Compile Include="Controllers\StudentsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -205,6 +206,10 @@
     <Compile Include="Migrations\202111131409231_newMigration2.cs" />
     <Compile Include="Migrations\202111131409231_newMigration2.Designer.cs">
       <DependentUpon>202111131409231_newMigration2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202111131610015_newMigration3.cs" />
+    <Compile Include="Migrations\202111131610015_newMigration3.Designer.cs">
+      <DependentUpon>202111131610015_newMigration3.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -287,6 +292,12 @@
     <Content Include="Views\Applications\Index.cshtml" />
     <Content Include="Views\Shared\_StudentNavBarPartial.cshtml" />
     <Content Include="Views\Applications\Create.cshtml" />
+    <Content Include="Views\Students\Create.cshtml" />
+    <Content Include="Views\Students\Delete.cshtml" />
+    <Content Include="Views\Students\Details.cshtml" />
+    <Content Include="Views\Students\Edit.cshtml" />
+    <Content Include="Views\Students\Index.cshtml" />
+    <Content Include="Views\Applications\Apply.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -325,6 +336,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202111131409231_newMigration2.resx">
       <DependentUpon>202111131409231_newMigration2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202111131610015_newMigration3.resx">
+      <DependentUpon>202111131610015_newMigration3.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

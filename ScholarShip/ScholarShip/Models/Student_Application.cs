@@ -15,6 +15,10 @@ namespace ScholarShip.Models
         [DisplayFormat(DataFormatString = ConstantVariables.defaultDateFormat)]
         public DateTime RegDate { get; set; }
 
+        [Required]
+        public int Application_Id { get; set; }
+        [Required]
+        public int Student_Id { get; set; }
         public Application Application { get; set; }
         public Student Student { get; set; }
     }

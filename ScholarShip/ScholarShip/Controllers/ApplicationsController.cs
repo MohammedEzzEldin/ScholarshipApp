@@ -100,7 +100,79 @@ namespace ScholarShip.Controllers
         //    ScholarShipsList();
         //    return View(application);
         //}
+        [Authorize(Roles = ConstantVariables.studentsRole)]
+        public ActionResult Apply(int? id)
+        {
+            if (id != null)
+            {
+                // cehck if he already apply on it 
+                if (db.Student_Application.Where(m => m.Application_Id == (int)id).SingleOrDefault() == null)
+                {
+                    var studID = Session[ConstantVariables.UserSessionKey];
+                    Application app = db.Application.Find(id);
+                    Student stud = db.Student.Find(studID);
+                    Student_Application student_Application = new Student_Application()
+                    {
+                        Application = app,
+                        Student = stud,
+                        Application_Id = (int)id,
+                        Student_Id = Convert.ToInt32(studID),
+                        RegDate = DateTime.Now
+                    };
+                    db.Student_Application.Add(student_Application);
+                    db.SaveChanges();
+                    string msg = string.Empty;
+                    bool isSend = StaticFunctions.SendEmail(
+                        Convert.ToString(Session[ConstantVariables.UserEmailSessionKey]),
+                        "apply Application",
+                        "Your application applied successfuly",
+                        ref msg
+                    );
+                    if (isSend)
+                    {
+                        msg = "We send the status on your email";
+                    }
+                    TempData["Message"] = msg;
+                }
+                else
+                {
+                    TempData["Message"] = "Your application is already applied.";
+                }
+            }
+            return RedirectToAction("Index", "Home");
+        }
 
+        [Authorize(Roles = ConstantVariables.studentsRole)]
+        public ActionResult CancelApplication(int? application_id)
+        {
+            if (application_id != null)
+            {
+                // cehck if he already apply on it 
+                Student_Application student_Application = db.Student_Application.Find(application_id);
+                db.Student_Application.Remove(student_Application);
+                db.SaveChanges();
+
+                string msg = "We send the status on your email";
+                bool isSend = StaticFunctions.SendEmail(
+                    Convert.ToString(Session[ConstantVariables.UserEmailSessionKey]),
+                    "cancel Application",
+                    "Your application cancelled successfuly",
+                    ref msg
+                );
+
+                if (isSend)
+                {
+                    msg = "We send the status on your email";
+                }
+                TempData["Message"] = msg;
+
+            }
+            else
+            {
+                TempData["Message"] = "Your application is already cancelled.";
+            }
+            return RedirectToAction("Index", "Home");
+        }
         // GET: Applications/Edit/5
         public ActionResult Edit(int? id)
         {

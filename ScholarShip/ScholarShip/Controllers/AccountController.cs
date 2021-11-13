@@ -84,7 +84,8 @@ namespace ScholarShip.Controllers
                         Student student = db.Student.Where(stud => stud.UserName.Equals(model.UserName)).SingleOrDefault();
                         if(student != null)
                         {
-                            Session["UserID"] = student.Id;
+                            Session[ConstantVariables.UserSessionKey] = student.Id;
+                            Session[ConstantVariables.UserEmailSessionKey] = student.Email;
                         }
                        return RedirectToLocal(returnUrl);
                     }
