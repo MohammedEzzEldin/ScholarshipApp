@@ -108,3 +108,5 @@ C:\Users\Admin\source\repos\MohammedEzzEldin\ScholarshipApp\ScholarShip\ScholarS
 C:\Users\Admin\source\repos\MohammedEzzEldin\ScholarshipApp\ScholarShip\ScholarShip\obj\Debug\ScholarShip.Migrations.InitialCreate.resources
 C:\Users\Admin\source\repos\MohammedEzzEldin\ScholarshipApp\ScholarShip\ScholarShip\obj\Debug\ScholarShip.csproj.GenerateResource.cache
 C:\Users\Admin\source\repos\MohammedEzzEldin\ScholarshipApp\ScholarShip\ScholarShip\obj\Debug\ScholarShip.Migrations.addSomeTables.resources
+C:\Users\Admin\source\repos\MohammedEzzEldin\ScholarshipApp\ScholarShip\ScholarShip\obj\Debug\ScholarShip.Migrations.fixSomeRelationships.resources
+C:\Users\Admin\source\repos\MohammedEzzEldin\ScholarshipApp\ScholarShip\ScholarShip\obj\Debug\ScholarShip.Migrations.fixSomeColumns.resources

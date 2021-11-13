@@ -1,3 +1,19 @@
-﻿@{
+﻿@model IEnumerable<ScholarShip.Models.Application>
+@{
     ViewBag.Title = "Home Page";
+}
+
+@foreach (var item in Model)
+{
+    <div class="card" style="width: 18rem;">
+        <div class="card-header"> @item.ScholarShip.Schol_Name</div>
+        <div class="card-body">
+            <h5 class="card-title">@item.ScholarShip.University</h5>
+            <p class="card-text">Field of Study : @item.ScholarShip.Field</p>
+            <p class="card-text">from : @item.ScholarShip.StartDate to @item.ScholarShip.EndDate </p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+
+            @Html.ActionLink("Details", "Details","Applications", new { id = item.Id },null) 
+        </div>
+    </div>
 }

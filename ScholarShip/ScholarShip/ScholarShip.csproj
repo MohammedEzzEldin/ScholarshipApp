@@ -173,7 +173,7 @@
     <Compile Include="Controllers\ApplicationsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\ScholarShipsController.cs" />
+    <Compile Include="Controllers\ScholarShipTblsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -185,8 +185,18 @@
     <Compile Include="Migrations\202111122039565_addSomeTables.Designer.cs">
       <DependentUpon>202111122039565_addSomeTables.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202111130756480_fixSomeRelationships.cs" />
+    <Compile Include="Migrations\202111130756480_fixSomeRelationships.Designer.cs">
+      <DependentUpon>202111130756480_fixSomeRelationships.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202111130802235_fixSomeColumns.cs" />
+    <Compile Include="Migrations\202111130802235_fixSomeColumns.Designer.cs">
+      <DependentUpon>202111130802235_fixSomeColumns.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Student_Scholarship.cs" />
+    <Compile Include="Models\Student_Application.cs" />
     <Compile Include="Models\Application.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -251,17 +261,17 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\ScholarShips\Create.cshtml" />
-    <Content Include="Views\ScholarShips\Delete.cshtml" />
-    <Content Include="Views\ScholarShips\Details.cshtml" />
-    <Content Include="Views\ScholarShips\Edit.cshtml" />
-    <Content Include="Views\ScholarShips\Index.cshtml" />
+    <Content Include="Views\Shared\_AdminNavBarPartial.cshtml" />
     <Content Include="Views\Applications\Create.cshtml" />
     <Content Include="Views\Applications\Delete.cshtml" />
     <Content Include="Views\Applications\Details.cshtml" />
     <Content Include="Views\Applications\Edit.cshtml" />
     <Content Include="Views\Applications\Index.cshtml" />
-    <Content Include="Views\Shared\_AdminNavBarPartial.cshtml" />
+    <Content Include="Views\ScholarShipTbls\Create.cshtml" />
+    <Content Include="Views\ScholarShipTbls\Delete.cshtml" />
+    <Content Include="Views\ScholarShipTbls\Details.cshtml" />
+    <Content Include="Views\ScholarShipTbls\Edit.cshtml" />
+    <Content Include="Views\ScholarShipTbls\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -285,6 +295,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202111122039565_addSomeTables.resx">
       <DependentUpon>202111122039565_addSomeTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202111130756480_fixSomeRelationships.resx">
+      <DependentUpon>202111130756480_fixSomeRelationships.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202111130802235_fixSomeColumns.resx">
+      <DependentUpon>202111130802235_fixSomeColumns.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

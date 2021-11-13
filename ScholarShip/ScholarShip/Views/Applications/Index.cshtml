@@ -12,15 +12,6 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.IsFinalPost)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IsAccepted)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.RegDate)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.StartDate)
         </th>
         <th>
@@ -31,15 +22,6 @@
 
 @foreach (var item in Model) {
     <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.IsFinalPost)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IsAccepted)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.RegDate)
-        </td>
         <td>
             @Html.DisplayFor(modelItem => item.StartDate)
         </td>

@@ -3,14 +3,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using ScholarShip.Models;
 
 namespace ScholarShip.Controllers
 {
     public class HomeController : Controller
     {
+        private ApplicationDbContext db = new ApplicationDbContext();
         public ActionResult Index()
         {
-            return View();
+            var view = db.Application.Where(
+                app => DateTime.Now.Year < app.EndDate.Year && 
+                       DateTime.Now.Month < app.EndDate.Month && 
+                       DateTime.Now.Day < app.EndDate.Day
+                ).ToList();
+
+            return View(view);
         }
 
         public ActionResult About()

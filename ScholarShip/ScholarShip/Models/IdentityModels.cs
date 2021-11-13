@@ -32,5 +32,7 @@ namespace ScholarShip.Models
         public DbSet<ScholarShipTbl> ScholarShips { get; set; }
         public DbSet<Student> Student { get; set; }
         public DbSet<Application> Application { get; set; }
+        public DbSet<Student_Scholarship> Student_Scholarship { get; set; }
+        public DbSet<Student_Application> Student_Application { get; set; }
     }
 }

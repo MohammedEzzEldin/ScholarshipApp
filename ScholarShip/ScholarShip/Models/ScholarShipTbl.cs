@@ -41,6 +41,5 @@ namespace ScholarShip.Models
         [Display(Name = "City")]
         public string City { get; set; }
 
-        public bool IsFinalPost { get; set; } = false;
     }
 }
